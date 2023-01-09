@@ -1,0 +1,7 @@
+If a course is about to begin, a tutor is able to modify the course's timestamp to an already passed time.
+This essentially makes the course disappear without warning. 
+Disable this "feature".
+
+Since in the firestore courses collection the tutor is saved as a map and not a reference to the tutor's document, 
+the tutor's color change is not reflected on already created courses.
+Disable this "feature".
