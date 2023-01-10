@@ -28,8 +28,8 @@ onMounted(() => {
 })
 
 const onInstallPWA = () => {
-  deferredPrompt.value.prompt()
-  deferredPrompt.value.userChoice.then((choiceResult) => {
+  deferredPrompt.value?.prompt()
+  deferredPrompt.value?.userChoice.then((choiceResult) => {
     if (choiceResult.outcome === 'accepted') analytics_install_pwa_event(user) 
     else analytics_reject_pwa_event(user)
     deferredPrompt.value = null
@@ -63,7 +63,7 @@ const onInstallPWA = () => {
             <router-link :to="{ name: 'login' }" class="nav-link" :class="route.name === 'login' ? 'active fw-bold' : ''">{{
             !user ? 'login' : 'logout' }}</router-link>
           </li>
-          <li v-if="displayMode === 'browser'" class="nav-item ms-sm-auto">
+          <li v-if="displayMode === 'browser' && deferredPrompt != null" class="nav-item ms-sm-auto">
             <span @click="onInstallPWA" class="nav-link active fw-bold install-button">Install</span>
           </li>
         </ul>
